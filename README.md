@@ -38,22 +38,22 @@ This portfolio is built with a focus on **Developer Experience (DX)** and **clea
 
 ## 📦 Deployment
 
-This portfolio is GitHub Pages ready. To deploy:
+This portfolio is configured for deployment to **https://satish-marathe.github.io/**.
 
-1. Update `vite.config.ts` to include your base path:
+1. Ensure `vite.config.ts` has the root base path:
    ```ts
    export default defineConfig({
-     base: '/portfolio/', // Change this to your repo name
+     base: '/', // Required for satish-marathe.github.io
      // ...
    });
    ```
 
-2. Run the build script:
+2. Run the deployment:
    ```bash
    npm run build
+   # If using gh-pages tool:
+   npm run deploy
    ```
-
-3. Push the `dist/` folder to your `gh-pages` branch.
 
 ## 📄 License
 
