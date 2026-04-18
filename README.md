@@ -2,8 +2,6 @@
 
 A high-performance, interactive portfolio designed specifically for Software Architects, Principal Engineers, and Technical Leaders. This repository serves as a digital architectural ledger, showcasing 15+ years of systems design, professional experience, and Gen AI research.
 
-![GitHub Portfolio Preview](https://picsum.photos/seed/portfolio/1200/600?blur=2)
-
 ## 🏗️ Architectural Overview
 
 This portfolio is built with a focus on **Developer Experience (DX)** and **clean architectural patterns**, utilizing a tech stack that reflects a modern frontend engineering mindset:
