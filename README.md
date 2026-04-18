@@ -1,11 +1,66 @@
-<div align="center">
+# Satish Marathe - Principal Software Architect Portfolio
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+A high-performance, interactive portfolio designed specifically for Software Architects, Principal Engineers, and Technical Leaders. This repository serves as a digital architectural ledger, showcasing 15+ years of systems design, professional experience, and Gen AI research.
 
-  <h1>Built with AI Studio</h2>
+![GitHub Portfolio Preview](https://picsum.photos/seed/portfolio/1200/600?blur=2)
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## 🏗️ Architectural Overview
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+This portfolio is built with a focus on **Developer Experience (DX)** and **clean architectural patterns**, utilizing a tech stack that reflects a modern frontend engineering mindset:
 
-</div>
+- **Framework**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/) for sub-second hot module replacement.
+- **Styling**: [Tailwind CSS 4.0](https://tailwindcss.com/) for utility-first responsive design.
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) for polished, high-density micro-interactions.
+- **Icons**: [Lucide React](https://lucide.dev/) for a consistent, professional design language.
+- **Markdown**: [React Markdown](https://github.com/remarkjs/react-markdown) for dynamic ledger/manifesto rendering.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/smarathe2024/portfolio.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## 📦 Deployment
+
+This portfolio is GitHub Pages ready. To deploy:
+
+1. Update `vite.config.ts` to include your base path:
+   ```ts
+   export default defineConfig({
+     base: '/portfolio/', // Change this to your repo name
+     // ...
+   });
+   ```
+
+2. Run the build script:
+   ```bash
+   npm run build
+   ```
+
+3. Push the `dist/` folder to your `gh-pages` branch.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+*“Simplicity is the ultimate sophistication in architectural design.” — Designed with precision by Satish Marathe.*
