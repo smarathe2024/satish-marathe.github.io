@@ -29,46 +29,70 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen pb-20">
+    <div className="min-h-screen pb-20 selection:bg-blue-600/10 selection:text-blue-600">
       {/* Professional Polish Header */}
-      <header className="sticky top-0 z-50 shadow-md">
-        <div className="bg-[var(--color-primary)] border-b-4 border-[var(--color-accent)]">
-          <div className="github-container py-0 h-20 flex items-center justify-between">
-            <div className="flex items-center gap-4 text-gray-800">
-            <div className="w-10 h-10 rounded-lg border border-white/20 bg-white/10 flex items-center justify-center font-bold text-lg text-white">
-              SM
-            </div>
-            <div className="flex flex-col text-white">
-              <h1 className="font-bold text-xl tracking-tight">Satish Marathe</h1>
-              <p className="text-white/60 text-xs font-medium uppercase tracking-widest mt-0.5">Software Architect</p>
-            </div>
-          </div>
+      <header className="sticky top-0 z-50 glass-effect shadow-sm">
+        <div className="bg-[var(--color-primary)] border-b-2 border-[var(--color-accent)] relative overflow-hidden">
+          {/* Decorative ambient glow */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] -mr-48 -mt-48 pointer-events-none" />
           
-          <div className="hidden md:flex items-center gap-6 text-white/80 text-xs">
-            <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
-              <span>Available for Consult</span>
-            </div>
-            <div className="flex items-center gap-4 border-l border-white/20 pl-6 font-bold uppercase tracking-widest">
-              <span className="text-white/40">satish-marathe</span>
-              <span className="text-white/20">/</span>
-              <span className="text-white hover:text-white transition-colors cursor-pointer">professional-ledger</span>
-            </div>
-          </div>
+          <div className="github-container py-0 h-16 flex items-center justify-between relative z-10">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-4 text-gray-800"
+            >
+              <div className="w-9 h-9 rounded-lg border border-white/20 bg-white/10 flex items-center justify-center font-bold text-lg text-white font-display">
+                SM
+              </div>
+              <div className="flex flex-col text-white">
+                <h1 className="font-bold text-lg tracking-tight font-display italic">Satish Marathe</h1>
+                <p className="text-white/50 text-[10px] font-black uppercase tracking-[0.2em] -mt-0.5">Systems Architect</p>
+              </div>
+            </motion.div>
+          
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="hidden md:flex items-center gap-6 text-white/80 text-xs"
+            >
+              <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 hover:bg-white/10 transition-colors">
+                <div className="w-1.5 h-1.5 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.5)]" />
+                <span className="font-bold tracking-tight">Available for Strategic Consult</span>
+              </div>
+              <div className="flex items-center gap-4 border-l border-white/20 pl-6 font-mono text-[11px] tracking-tight">
+                <span className="text-white/30">satish-marathe</span>
+                <span className="text-white/20">/</span>
+                <span className="text-white hover:text-blue-400 transition-colors cursor-pointer font-bold">architectural-ledger</span>
+              </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Navigation Tabs Bar */}
-        <div className="bg-white border-b border-[var(--color-line)]">
+        <div className="border-b border-[var(--color-line)]">
           <div className="github-container py-0 flex overflow-x-auto no-scrollbar scroll-smooth">
-            {tabs.map(tab => (
+            {tabs.map((tab, idx) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`nav-tab whitespace-nowrap cursor-pointer transition-colors ${activeTab === tab.id ? 'nav-tab-active' : ''}`}
+                className={`nav-tab whitespace-nowrap relative group ${activeTab === tab.id ? 'nav-tab-active' : ''}`}
               >
-                <tab.icon size={16} />
-                <span>{tab.label}</span>
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                  className="flex items-center gap-2"
+                >
+                  <tab.icon size={15} />
+                  <span>{tab.label}</span>
+                </motion.div>
+                {activeTab === tab.id && (
+                  <motion.div 
+                    layoutId="activeTab"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--color-accent)] shadow-[0_0_8px_rgba(37,99,235,0.4)]"
+                  />
+                )}
               </button>
             ))}
           </div>

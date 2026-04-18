@@ -1,24 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,900;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-display: "Inter", serif;
+  --font-display: "Outfit", sans-serif;
 
   --color-primary: #0f172a;
   --color-secondary: #334155;
   --color-accent: #2563eb;
+  --color-accent-soft: #eff6ff;
   --color-text-main: #1e293b;
   --color-text-muted: #64748b;
   --color-line: #e2e8f0;
   --color-surface: #f8fafc;
   --color-card-bg: #ffffff;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 @layer base {
   body {
     @apply bg-[var(--color-surface)] text-[var(--color-text-main)] font-sans antialiased selection:bg-[var(--color-accent)] selection:text-white;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.03) 0, transparent 50%), 
+      radial-gradient(at 100% 100%, rgba(37, 99, 235, 0.03) 0, transparent 50%);
   }
 }
 
@@ -28,18 +36,39 @@
   }
   
   .section-container {
-    @apply bg-[var(--color-card-bg)] border border-[var(--color-line)] rounded-lg overflow-hidden flex flex-col;
+    @apply bg-[var(--color-card-bg)] border border-[var(--color-line)] rounded-xl overflow-hidden flex flex-col shadow-sm transition-all duration-300;
   }
 
   .section-header {
-    @apply px-4 py-3 bg-[#f1f5f9] border-b border-[var(--color-line)] text-[12px] font-bold uppercase tracking-wider text-[var(--color-secondary)] flex items-center gap-2;
+    @apply px-4 py-3 bg-[#f8fafc] border-b border-[var(--color-line)] text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--color-text-muted)] flex items-center gap-2;
   }
 
   .nav-tab {
-    @apply flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 border-transparent hover:border-[var(--color-line)] hover:text-[var(--color-text-main)] transition-all text-[var(--color-text-muted)];
+    @apply flex items-center gap-2 px-5 py-4 text-[13px] font-bold uppercase tracking-tight border-b-2 border-transparent hover:text-[var(--color-primary)] transition-all text-[var(--color-text-muted)] cursor-pointer;
   }
 
   .nav-tab-active {
-    @apply border-b-2 !border-[var(--color-accent)] !text-[var(--color-accent)] font-semibold;
+    @apply border-b-2 !border-[var(--color-accent)] !text-[var(--color-primary)] bg-blue-50/30;
+  }
+
+  /* Fluidic hover effects */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-md active:scale-[0.98];
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/80 border border-white/20;
+  }
+
+  /* Custom Scrollbar for a more integrated feel */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[var(--color-line)] rounded-full hover:bg-[var(--color-text-muted)];
   }
 }
