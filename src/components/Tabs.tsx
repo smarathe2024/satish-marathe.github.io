@@ -4,6 +4,8 @@ import { PROJECTS, EXPERIENCES, SKILLS, BLOG_POSTS, CERTIFICATIONS, CONTRIBUTION
 import { FileText, BookOpen, Award, GitBranch, Terminal, Layout, PenTool } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { motion } from 'motion/react';
+import BlogPostView from './BlogPostView';
+import type { BlogPost } from '../types';
 
 export const OverviewTab: React.FC = () => (
   <div className="space-y-8 animate-in fade-in duration-500">
@@ -72,36 +74,53 @@ export const SkillsTab: React.FC = () => (
   </div>
 );
 
-export const BlogTab: React.FC = () => (
-  <div className="space-y-6 animate-in slide-in-from-right-4 duration-500">
-    <div className="section-container">
-      <div className="section-header">
-        <PenTool size={14} />
-        <span>Latest Architectural Analysis</span>
-      </div>
-      <div className="divide-y divide-[var(--color-line)]">
-        {BLOG_POSTS.map(post => (
-          <div key={post.id} className="p-6 hover:bg-[var(--color-surface)] transition-all group cursor-pointer">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-              <h3 className="text-[15px] font-bold text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">
-                {post.title}
-              </h3>
-              <span className="text-[10px] font-bold text-[var(--color-text-muted)] whitespace-nowrap bg-white border border-[var(--color-line)] px-2 py-1 rounded-full uppercase tracking-widest">
-                {post.date} • {post.readTime}
-              </span>
+export const BlogTab: React.FC = () => {
+  const [selectedPost, setSelectedPost] = React.useState<BlogPost | null>(null);
+
+  if (selectedPost) {
+    return (
+      <BlogPostView 
+        post={selectedPost} 
+        onBack={() => setSelectedPost(null)} 
+      />
+    );
+  }
+
+  return (
+    <div className="space-y-6 animate-in slide-in-from-right-4 duration-500">
+      <div className="section-container">
+        <div className="section-header">
+          <PenTool size={14} />
+          <span>Latest Architectural Analysis</span>
+        </div>
+        <div className="divide-y divide-[var(--color-line)]">
+          {BLOG_POSTS.map(post => (
+            <div 
+              key={post.id} 
+              onClick={() => setSelectedPost(post)}
+              className="p-6 hover:bg-[var(--color-surface)] transition-all group cursor-pointer"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                <h3 className="text-[15px] font-bold text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">
+                  {post.title}
+                </h3>
+                <span className="text-[10px] font-bold text-[var(--color-text-muted)] whitespace-nowrap bg-white border border-[var(--color-line)] px-2 py-1 rounded-full uppercase tracking-widest">
+                  {post.date} • {post.readTime}
+                </span>
+              </div>
+              <p className="text-[13px] text-[var(--color-text-muted)] mb-4 line-clamp-2 leading-relaxed font-medium">
+                {post.excerpt}
+              </p>
+              <button className="text-[12px] font-bold text-[var(--color-accent)] hover:underline inline-flex items-center gap-1 group/btn uppercase tracking-tighter">
+                Read architectural deep-dive <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
+              </button>
             </div>
-            <p className="text-[13px] text-[var(--color-text-muted)] mb-4 line-clamp-2 leading-relaxed font-medium">
-              {post.excerpt}
-            </p>
-            <button className="text-[12px] font-bold text-[var(--color-accent)] hover:underline inline-flex items-center gap-1 group/btn uppercase tracking-tighter">
-              Read architectural deep-dive <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
-            </button>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const OssTab: React.FC = () => (
   <div className="space-y-8 animate-in fade-in duration-500">

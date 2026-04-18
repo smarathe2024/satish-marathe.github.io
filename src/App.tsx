@@ -40,7 +40,7 @@ export default function App() {
             </div>
             <div className="flex flex-col text-white">
               <h1 className="font-bold text-xl tracking-tight">Satish Marathe</h1>
-              <p className="text-white/60 text-xs font-medium uppercase tracking-widest mt-0.5">Principal Software Architect</p>
+              <p className="text-white/60 text-xs font-medium uppercase tracking-widest mt-0.5">Software Architect</p>
             </div>
           </div>
           

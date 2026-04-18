@@ -2,7 +2,7 @@ import { Project, Experience, SkillCategory, BlogPost, Certification, Contributi
 
 export const PROFILE = {
   name: "Satish R. Marathe",
-  role: "Principal Software Architect | Gen AI Specialist",
+  role: "Software Architect | Gen AI Specialist",
   username: "smarathe2024",
   bio: "Software Architect with 15+ years of leadership in enterprise communications, cloud-native SaaS, and AI systems. U.S. Patent holder and specialist in Gen AI orchestration and resilient multi-cloud platforms.",
   location: "Pune, India",
@@ -95,9 +95,9 @@ export const EXPERIENCES: Experience[] = [
     description: [
       "Architected AXP Infinity, an Azure-based multi-tenant SaaS contact center platform serving global enterprises.",
       "Delivered 3× latency improvement and 40% infrastructure cost reduction through service decomposition and re-architecting.",
-      "Led the transition to event-driven architectures using Kafka, handling millions of events daily with sub-millisecond response times.",
-      "Built a GenAI POC for email intelligence using GPT-4o and pgvector, achieving 28% improvement in retrieval precision.",
-      "Managed a cross-functional team of 55+ engineers, mentoring staff and driving global architectural governance."
+      "Led the transition to event-driven architectures using Kafka, handling millions of events daily.",
+      "Built a GenAI POC using GPT-4o and pgvector, achieving 28% improvement in retrieval precision.",
+      "Managed a cross-functional team of 55+ engineers, driving global architectural governance."
     ],
     skills: ["Azure AKS", "Kafka", "Java", "GPT-4o", "Kubernetes"]
   },
@@ -105,12 +105,55 @@ export const EXPERIENCES: Experience[] = [
     id: "exp3",
     company: "Bigates Software",
     role: "Sr. Software Engineer",
-    period: "2002 – 2004",
+    period: "Aug 2002 – Sep 2004",
     description: [
       "Engineered core components for enterprise contact center platforms and Siebel CRM integrations.",
-      "Focused on production stability, root cause analysis, and high-quality release cycles for On-Prem systems."
+      "Supported production stability, root cause analysis, and high-quality release cycles."
     ],
     skills: ["C++", "CRM Integration", "System Reliability"]
+  },
+  {
+    id: "exp4",
+    company: "Internet Trends (India)",
+    role: "Software Engineer",
+    period: "Oct 2000 – June 2002",
+    description: [
+      "Developed a personal firewall for Windows at NDIS driver level and system services architecture.",
+      "Implemented packet filtering, IDS rule engines, and application-layer filtering for enhanced security."
+    ],
+    skills: ["Network Security", "NDIS", "C++"]
+  },
+  {
+    id: "exp5",
+    company: "SmartStorage (India)",
+    role: "Software Engineer",
+    period: "Feb 2000 – Sep 2000",
+    description: [
+      "Implemented an enterprise-grade email archiving solution supporting compliance and long-term retention.",
+      "Developed Outlook and Lotus Notes plugins for seamless email capture and archival."
+    ],
+    skills: ["Email Archiving", "Outlook Plugins", "C++"]
+  },
+  {
+    id: "exp6",
+    company: "Print Electronics Equipment",
+    role: "Software Engineer",
+    period: "Jul 1998 – Feb 2000",
+    description: [
+      "Designed and developed email ingestion and routing software for Microsoft Exchange–based environments.",
+      "Developed biometric and access control systems integrating multiple hardware interfaces."
+    ],
+    skills: ["Systems Integration", "Biometrics", "C++"]
+  },
+  {
+    id: "exp7",
+    company: "Alpic Finance Ltd.",
+    role: "Software Programmer",
+    period: "Apr 1997 – Jan 1998",
+    description: [
+      "Developed accounting, fixed deposit, and MIS systems for financial operations."
+    ],
+    skills: ["Financial Systems", "Database Design"]
   }
 ];
 
@@ -140,7 +183,24 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "Why starting with a modular monolith is often the better architectural decision for early-stage products.",
     date: "Oct 12, 2025",
     readTime: "8 min read",
-    link: "#"
+    link: "/blog/microservices-fallacy",
+    content: `
+# The Fallacy of Microservices-by-Default
+
+In today's architectural landscape, the rush towards microservices is often seen as a prerequisite for success. However, for many organizations, this "distributed monolith" approach introduces more complexity than it solves.
+
+## The Cost of Distribution
+
+When you split a system into microservices, you aren't just splitting code; you're introducing network latency, eventual consistency, and the nightmare of distributed transactions.
+
+### Why Modular Monoliths Win
+1. **Simplified Deployment**: One pipeline, one artifact.
+2. **Type Safety**: Cross-domain changes are caught at compile time.
+3. **Operational Simplicity**: Easier monitoring and debugging.
+
+## When to Actually Switch
+Transition when your team size exceeds the cognitive load of a single codebase, or when specific services have radically different scaling needs. Don't build for tomorrow's scale with today's limited resources.
+    `
   },
   {
     id: "b2",
@@ -148,7 +208,20 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "Diving deep into memory management, async trait challenges, and the power of the type system.",
     date: "Aug 24, 2025",
     readTime: "12 min read",
-    link: "#"
+    link: "/blog/rust-db-lessons",
+    content: `
+# Lessons Learned Building a DB in Rust
+
+Building a database engine from scratch is the ultimate test of an engineer's understanding of systems programming. Doing it in Rust adds a layer of safety and complexity that is rewarding yet challenging.
+
+## Ownership and Borrowing
+The borrow checker is your best friend when managing buffer pools and write-ahead logs. It prevents the data races that plague C++ implementations.
+
+## Async Challenges
+Implementing an async executor that doesn't sacrifice performance is tricky. We leaned heavily on \`tokio\` but found that custom thread scheduling was necessary for high-throughput disk I/O.
+
+> "Rust doesn't make hard things easy; it makes them possible to do safely."
+    `
   },
   {
     id: "b3",
@@ -156,7 +229,20 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "How to implement structured tracing and meaningful metrics that actually help you solve production incidents.",
     date: "Jun 05, 2025",
     readTime: "6 min read",
-    link: "#"
+    link: "/blog/observability-beyond-logging",
+    content: `
+# Observability Beyond Logging
+
+Logs tell you *what* happened, but metrics and traces tell you *why*.
+
+## Moving to Structured Tracing
+We moved from plain text logs to OpenTelemetry-based tracing. This allowed us to visualize the entire lifecycle of a request across 50+ microservices.
+
+### Key Metrics to Watch
+- **Latency**: p99 is the only one that matters.
+- **Error Rate**: Use error budgets to drive stability.
+- **Saturation**: Know your breaking points before they hit.
+    `
   }
 ];
 

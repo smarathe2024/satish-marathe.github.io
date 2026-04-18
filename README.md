@@ -1,4 +1,4 @@
-# Satish Marathe - Principal Software Architect Portfolio
+# Satish Marathe - Software Architect Portfolio
 
 A high-performance, interactive portfolio designed specifically for Software Architects, Principal Engineers, and Technical Leaders. This repository serves as a digital architectural ledger, showcasing 15+ years of systems design, professional experience, and Gen AI research.
 

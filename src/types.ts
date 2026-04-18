@@ -32,6 +32,7 @@ export interface BlogPost {
   date: string;
   readTime: string;
   link: string;
+  content?: string;
 }
 
 export interface Certification {
